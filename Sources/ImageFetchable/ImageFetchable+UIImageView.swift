@@ -14,8 +14,8 @@ public extension ImageFetchable where T == UIImageView {
     /// 设置图片
     /// - Parameter urlStringOrImageName: 网络图片地址或本地图片素材名
     @discardableResult
-    func setImage(_ urlStringOrImageName: String?) async -> Result<UIImage?, Error> {
-        guard let urlStringOrImageName, urlStringOrImageName.count > 0 else { return .failure(ImageFetchError.invalidURL) }
+    func setImage(_ urlStringOrImageName: String) async -> Result<UIImage?, Error> {
+        guard urlStringOrImageName.count > 0 else { return .failure(ImageFetchError.invalidURL) }
         if urlStringOrImageName.contains("://") {
             return await setImage(.init(string: urlStringOrImageName), placeholder: nil)
         } else {
@@ -36,7 +36,7 @@ public extension ImageFetchable where T == UIImageView {
     
     /// 设置图片
     /// - Parameter urlStringOrImageName: 网络图片地址或本地图片素材名
-    func setImage(_ urlStringOrImageName: String?) {
+    func setImage(_ urlStringOrImageName: String) {
         Task {
             await setImage(urlStringOrImageName)
         }
@@ -68,7 +68,7 @@ public extension UIImageView {
         .init(sourceType: self)
     }
     
-    func setImage(_ urlStringOrImageName: String?) {
+    func setImage(_ urlStringOrImageName: String) {
         fetcher.setImage(urlStringOrImageName)
     }
     

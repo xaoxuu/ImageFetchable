@@ -14,8 +14,8 @@ public extension ImageFetchable where T == UIButton {
     /// 设置图片
     /// - Parameter urlStringOrImageName: 网络图片地址或本地图片素材名
     @discardableResult
-    func setImage(_ urlStringOrImageName: String?, for state: UIControl.State = .normal) async -> Result<UIImage?, Error> {
-        guard let urlStringOrImageName, urlStringOrImageName.count > 0 else { return .failure(ImageFetchError.invalidURL) }
+    func setImage(_ urlStringOrImageName: String, for state: UIControl.State = .normal) async -> Result<UIImage?, Error> {
+        guard urlStringOrImageName.count > 0 else { return .failure(ImageFetchError.invalidURL) }
         if urlStringOrImageName.contains("://") {
             return await setImage(.init(string: urlStringOrImageName), placeholder: nil, for: state)
         } else {
@@ -68,11 +68,11 @@ public extension UIButton {
         .init(sourceType: self)
     }
     
-    func setImage(_ urlStringOrImageName: String?, for state: UIControl.State = .normal) {
+    func setImage(_ urlStringOrImageName: String, for state: UIControl.State = .normal) {
         fetcher?.setImage(urlStringOrImageName, for: state)
     }
     
-    func setImage(_ url: URL?, placeholder: UIImage? = nil, for state: UIControl.State = .normal) {
+    func setImage(_ url: URL, placeholder: UIImage? = nil, for state: UIControl.State = .normal) {
         fetcher?.setImage(url, placeholder: placeholder, for: state)
     }
     
