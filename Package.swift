@@ -4,22 +4,22 @@
 import PackageDescription
 
 let package = Package(
-    name: "ImageFetcher",
+    name: "ImageFetchable",
     platforms: [.macOS(.v10_15), .iOS(.v13), .tvOS(.v13), .watchOS(.v6), .macCatalyst(.v13)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "ImageFetcher",
-            targets: ["ImageFetcher"]),
+            name: "ImageFetchable",
+            targets: ["ImageFetchable"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "ImageFetcher"),
+            name: "ImageFetchable"),
         .testTarget(
-            name: "ImageFetcherTests",
-            dependencies: ["ImageFetcher"]
+            name: "ImageFetchableTests",
+            dependencies: ["ImageFetchable"]
         ),
     ]
 )
