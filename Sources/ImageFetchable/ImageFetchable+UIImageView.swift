@@ -9,7 +9,7 @@ import UIKit
 
 public extension ImageFetchable where T == UIImageView {
     
-    var imp: ImageFetchable_UIImageView? { self as? ImageFetchable_UIImageView }
+    var imp: ImageFetchableUIImageView? { self as? ImageFetchableUIImageView }
     
     /// 设置图片
     /// - Parameter urlStringOrImageName: 网络图片地址或本地图片素材名
@@ -54,9 +54,9 @@ public extension ImageFetchable where T == UIImageView {
     
 }
 
-public protocol ImageFetchable_UIImageView {
+public protocol ImageFetchableUIImageView {
     /// 设置本地图片
-    @MainActor func fetchImage(_ imageView: UIImageView, imageName: String?) async -> Result<UIImage?, Error>
+    @MainActor func fetchImage(_ imageView: UIImageView, imageName: String) async -> Result<UIImage?, Error>
     /// 设置网络图片
     @MainActor func fetchImage(_ imageView: UIImageView, imageURL: URL?, placeholder: UIImage?) async -> Result<UIImage?, Error>
 }
