@@ -42,4 +42,7 @@ extension ImageFetchable: ImageFetchable_UIButton {
     await imgv.setImage(urlStringOrImageName)
     await btn.setImage(urlStringOrImageName)
     
+    // ---- 通过 URL 获取图片对象 ----
+    let image = try? await URL(string: imageURLStr)?.fetchImage().get()
+    
 }

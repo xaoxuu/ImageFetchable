@@ -7,6 +7,13 @@
 
 import UIKit
 
+public protocol ImageFetchableUIButton {
+    /// 设置本地图片
+    @MainActor func fetchButtonImage(_ button: UIButton, imageName: String, for state: UIControl.State) async -> Result<UIImage?, Error>
+    /// 设置网络图片
+    @MainActor func fetchButtonImage(_ button: UIButton, imageURL: URL?, placeholder: UIImage?, for state: UIControl.State) async -> Result<UIImage?, Error>
+}
+
 public extension ImageFetchable where T == UIButton {
     
     var imp: ImageFetchableUIButton? { self as? ImageFetchableUIButton }
@@ -52,13 +59,6 @@ public extension ImageFetchable where T == UIButton {
         }
     }
     
-}
-
-public protocol ImageFetchableUIButton {
-    /// 设置本地图片
-    @MainActor func fetchButtonImage(_ button: UIButton, imageName: String, for state: UIControl.State) async -> Result<UIImage?, Error>
-    /// 设置网络图片
-    @MainActor func fetchButtonImage(_ button: UIButton, imageURL: URL?, placeholder: UIImage?, for state: UIControl.State) async -> Result<UIImage?, Error>
 }
 
 public extension UIButton {
