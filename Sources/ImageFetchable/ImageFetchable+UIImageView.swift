@@ -68,11 +68,11 @@ public extension UIImageView {
         .init(sourceType: self)
     }
     
-    func setImage(_ urlStringOrImageName: String) {
+    @objc func setImage(_ urlStringOrImageName: String) {
         fetcher.setImage(urlStringOrImageName)
     }
     
-    func setImage(_ url: URL?, placeholder: UIImage? = nil) {
+    @objc func setImage(_ url: URL?, placeholder: UIImage? = nil) {
         fetcher.setImage(url, placeholder: placeholder)
     }
     

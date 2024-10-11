@@ -68,11 +68,11 @@ public extension UIButton {
         .init(sourceType: self)
     }
     
-    func setImage(_ urlStringOrImageName: String, for state: UIControl.State = .normal) {
+    @objc func setImage(_ urlStringOrImageName: String, for state: UIControl.State = .normal) {
         fetcher?.setImage(urlStringOrImageName, for: state)
     }
     
-    func setImage(_ url: URL, placeholder: UIImage? = nil, for state: UIControl.State = .normal) {
+    @objc func setImage(_ url: URL, placeholder: UIImage? = nil, for state: UIControl.State = .normal) {
         fetcher?.setImage(url, placeholder: placeholder, for: state)
     }
     
